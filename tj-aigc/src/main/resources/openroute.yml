@@ -3,6 +3,7 @@ tj:
     dashscope:
       # key: ${ALIYUN_API_KEY}  #换成你自己的阿里百炼key 或 读取环境变量中的配置
       key: sk-ws-H.RXMELYI.jW5I.MEUCIQCIdj7hA1HdUuKZ83q_RThVBd-W-jadxnzH9cFmGG2aqgIgKpd4lxJi5mkQVXcUemwtYmh5KysgZgTeM4buYD6Xi2Q
+      enabled: false
     session:
       title: Hello，我是天机AI助理
       describe: 我是由天机学堂倾力打造的智能助理，我不仅能推荐课程、答疑解惑，还能为您激发创意、畅聊心事。
@@ -47,26 +48,11 @@ tj:
           describe: " 装饰器的作用是什么？"
         - title: "知识讲解"
           describe: "多线程为什么有GIL限制？"
-#spring:
-#  ai:
-##    dashscope:
-##      api-key: ${tj.ai.dashscope.key}
-##      chat:
-##        enabled: true
-##        options:
-##          model: glm-5.1
-##          # model: qwen2.5-1.5b-instruct  免费模型
-##      embedding:
-##        enabled: true
-##        options:
-##          model: text-embedding-v3 #向量模型
-##          dimensions: 1024 #向量维度维度
-
 spring:
   ai:
     openai:
       api-key: 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
-      base-url: https://openrouter.ai/api/v1
+      base-url: https://openrouter.ai/api
       chat:
         options:
           model: openai/gpt-oss-120b:free
