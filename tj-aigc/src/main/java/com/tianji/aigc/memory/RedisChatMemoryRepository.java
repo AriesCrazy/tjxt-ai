@@ -1,5 +1,6 @@
 package com.tianji.aigc.memory;
 
+import cn.hutool.core.collection.CollStreamUtil;
 import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.stream.StreamUtil;
@@ -49,8 +50,15 @@ public class RedisChatMemoryRepository implements ChatMemoryRepository {
 
     @Override
     public List<Message> findByConversationId(String conversationId) {
-        // 先不实现
-        return List.of();
+        // 生成Redis键名用于存储会话消息
+        var redisKey = this.getKey(conversationId);
+        // 获取Redis列表操作对象
+        var listOps = this.stringRedisTemplate.boundListOps(redisKey);
+
+        // 从Redis列表中获取所有的数据
+        var messages = listOps.range(0, -1);
+        // 将Redis返回的字符串列表转换为Message对象列表
+        return CollStreamUtil.toList(messages, MessageUtil::toMessage);
     }
 
     @Override
