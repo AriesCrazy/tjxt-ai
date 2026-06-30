@@ -13,7 +13,6 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MessageVO {
-
     /**
      * 消息类型，USER表示用户提问，ASSISTANT表示AI的回答
      */
