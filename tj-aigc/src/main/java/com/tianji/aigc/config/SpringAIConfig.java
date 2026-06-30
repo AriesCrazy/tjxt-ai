@@ -23,10 +23,11 @@ public class SpringAIConfig {
      */
     @Bean
     public ChatClient chatClient(ChatClient.Builder chatClientBuilder,
-                                 Advisor loggerAdvisor,
-                                 Advisor messageChatMemoryAdvisor) {  // 日志记录器
+                                 Advisor loggerAdvisor, // 日志记录器
+                                 Advisor messageChatMemoryAdvisor
+    ) {
         return chatClientBuilder
-                .defaultAdvisors(loggerAdvisor,messageChatMemoryAdvisor) //添加 Advisor 功能增强
+                .defaultAdvisors(loggerAdvisor, messageChatMemoryAdvisor) //添加 Advisor 功能增强
                 .build();
     }
 

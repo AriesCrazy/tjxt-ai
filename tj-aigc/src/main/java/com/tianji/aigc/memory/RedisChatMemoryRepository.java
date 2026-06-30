@@ -61,7 +61,7 @@ public class RedisChatMemoryRepository implements ChatMemoryRepository {
         // 保存数据时，会传入全部的消息数据，包括之前的数据，所以需要先删除之前的数据，再添加新的数据
         this.deleteByConversationId(conversationId);
         // 将消息序列化并添加到Redis列表的右侧
-        messages.forEach(message -> listOps.rightPush(JSONUtil.toJsonStr(message)));
+        messages.forEach(message -> listOps.rightPush(MessageUtil.toJson(message)));
     }
 
     @Override
